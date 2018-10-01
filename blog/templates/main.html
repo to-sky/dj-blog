@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Blog | {% block sub_title %}{% endblock %}{% endblock %}
+
+{% block container %}
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-8">
+        {% block content %}{% endblock %}
+      </div>
+      <div class="col-md-4">
+        {% block sidebar %}
+          <h2>Sidebar</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto atque cum dolore eligendi illum
+            incidunt inventore iure laudantium, maiores nisi placeat possimus provident quasi, quibusdam repellat
+            similique sunt vel veritatis?</p>
+        {% endblock %}
+      </div>
+    </div>
+  </div>
+{% endblock %}
