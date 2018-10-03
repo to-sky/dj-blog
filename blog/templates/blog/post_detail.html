@@ -3,7 +3,19 @@
 
 {% block content %}
   <h1>{{ post.title }}</h1>
-  <hr>
+  <p class="text-info mt-2 mb-4">Published {{ post.pub_date }} by <a href="#blog/author/author_name">{{ post.author }}</a></p>
   <p>{{ post.body }}</p>
+  <hr>
+  <p>Category: <a href="#blog/category/lorem">{{ post.category }}</a></p>
+  <div>
+    <p>Tags:
+      {% for tag in post.tag.all %}
+        <a href="#blog/tag/tag_name">
+          <span class="badge badge-pill badge-secondary">{{ tag }}</span>
+        </a>
+      {% endfor %}
+    </p>
+  </div>
 
+  {#TODO: need to be adding the comments #}
 {% endblock %}
