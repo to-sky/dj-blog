@@ -1,5 +1,17 @@
-{% extends "base.html" %}
+{% extends "account/base.html" %}
+
+{% block menu %}
+  <h3>This is menu for user</h3>
+{% endblock %}
 
 {% block content %}
-  Hello {{ user }}
+    <h3>User profile</h3>
+    <hr>
+
+    <p>
+      <strong>Username: </strong>{{ user }}
+    </p>
+    <p>
+      <strong>Email: </strong>{{ user.email }}
+    </p>
 {% endblock %}
