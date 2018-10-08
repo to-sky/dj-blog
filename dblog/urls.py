@@ -24,5 +24,5 @@ urlpatterns = [
     re_path(r'^accounts/', include('allauth.urls')),
     re_path(r'^accounts/profile', views.profile, name='profile'),
     path('', RedirectView.as_view(url='blog/')),
-    path('blog/', include('blog.urls'))
+    path('blog/', include('blog.urls')),
 ]

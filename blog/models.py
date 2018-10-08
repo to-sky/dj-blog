@@ -15,7 +15,7 @@ class Post(models.Model):
         return self.title
 
     def short_body(self):
-        return self.body[:255]
+        return self.body[:255] + '...'
 
     def get_absolute_url(self):
         return reverse('post.detail', args=[str(self.id)])

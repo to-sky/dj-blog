@@ -3,10 +3,12 @@
 
 {% block content %}
   <h1>{{ post.title }}</h1>
-  <p class="text-info mt-2 mb-4">Published {{ post.pub_date }} by <a href="#blog/author/author_name">{{ post.author }}</a></p>
+  <p class="text-info mt-2 mb-4">
+    Published by <a href="{% url 'author.posts' post.author_id %}">{{ post.author }}</a> on {{ post.pub_date }}
+  </p>
   <p>{{ post.body }}</p>
   <hr>
-  <p>Category: <a href="#blog/category/lorem">{{ post.category }}</a></p>
+  <p>Category: <a href="/blog/category/{{ post.category_id }}">{{ post.category }}</a></p>
   <div>
     <p>Tags:
       {% for tag in post.tag.all %}
