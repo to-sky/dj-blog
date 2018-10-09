@@ -16,7 +16,7 @@
               <strong class="text-muted">{{ post.pub_date }}</strong>
               by
               <strong class="text-primary">
-                <a href="{% url 'post.detail' post.author_id %}">{{ post.author }}</a>
+                <a href="{% url 'posts.filter' %}?author={{ post.author.id }}">{{ post.author }}</a>
               </strong>
             </small>
           </p>

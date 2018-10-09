@@ -5,13 +5,51 @@
 {% endblock %}
 
 {% block content %}
-    <h3>User profile</h3>
-    <hr>
+  <div class="row mt-3">
+    <div class="col-3">
+      <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+        <a class="nav-link btn btn-outline-light shadow text-secondary active" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</a>
+        <a class="nav-link btn btn-outline-light shadow text-secondary mt-2" id="v-pills-posts-tab" data-toggle="pill" href="#v-pills-posts" role="tab" aria-controls="v-pills-posts" aria-selected="false">Posts</a>
+      </div>
+    </div>
+    <div class="col-9">
+      <div class="tab-content" id="v-pills-tabContent">
+        <div class="tab-pane fade show active" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+          <div class="row">
+            <div class="col-1 h1">
+              <i class="fas fa-user-circle text-success"></i>
+            </div>
+            <div class="col-6">
+              <p><strong>Username: </strong>{% firstof user.get_full_name user %}</p>
+              <p><strong>Email: </strong>{{ user.email }}</p>
+            </div>
+          </div>
+        </div>
 
-    <p>
-      <strong>Username: </strong>{{ user }}
-    </p>
-    <p>
-      <strong>Email: </strong>{{ user.email }}
-    </p>
+        <div class="tab-pane fade" id="v-pills-posts" role="tabpanel" aria-labelledby="v-pills-posts-tab">
+          <h4>
+            Posts
+            <a href="{% url 'post.create' %}" class="btn btn-sm btn-success float-right">
+              <i class="fas fa-plus-square"></i> Create
+            </a>
+          </h4>
+
+          <ul class="list-group mt-3">
+            {% for post in posts %}
+              <li class="list-group-item">
+                {{ post }}
+                <div class="btn-group float-right" role="group" >
+                  <a href="{% url 'post.edit' post.id %}" class="btn btn-sm btn-outline-primary">
+                    <i class="fas fa-pencil-alt"></i> Edit
+                  </a>
+                  <a href="{% url 'post.delete' post.id %}" class="btn btn-sm btn-outline-danger">
+                    <i class="fas fa-eraser"></i> Delete</a>
+                </div>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock %}
