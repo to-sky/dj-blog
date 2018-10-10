@@ -42,7 +42,10 @@
                   <a href="{% url 'post.edit' post.id %}" class="btn btn-sm btn-outline-primary">
                     <i class="fas fa-pencil-alt"></i> Edit
                   </a>
-                  <a href="{% url 'post.delete' post.id %}" class="btn btn-sm btn-outline-danger">
+                  <a href="{% url 'post.delete' post.id %}"
+                     class="btn btn-sm btn-outline-danger delete-post"
+                     data-toggle="modal"
+                     data-target="#deletePostModal">
                     <i class="fas fa-eraser"></i> Delete</a>
                 </div>
               </li>
@@ -52,4 +55,38 @@
       </div>
     </div>
   </div>
+
+  <div class="modal fade" id="deletePostModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-body">
+          <i class="fas fa-trash-alt text-danger"></i> Are you sure to delete this post?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" id="postDelete" class="btn btn-sm btn-danger">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+  <script>
+    let deletePostModal = $('#deletePostModal');
+
+    deletePostModal.on('show.bs.modal', function (event) {
+      let targetUrl = $(event.relatedTarget).attr('href');
+
+      $('#postDelete').click(function() {
+        let data = { 'csrfmiddlewaretoken': "{{ csrf_token }}" };
+
+        $.post(targetUrl, data)
+          .done(function () {
+              deletePostModal.modal('hide');
+              location.reload();
+          })
+      });
+    });
+  </script>
 {% endblock %}

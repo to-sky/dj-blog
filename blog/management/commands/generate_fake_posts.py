@@ -6,6 +6,7 @@ from faker import Faker
 
 fake = Faker('en_US')
 
+
 class Command(BaseCommand):
 
     def handle(self, *args, **options):
@@ -16,7 +17,7 @@ class Command(BaseCommand):
                 title=fake.sentence(),
                 body=fake.text(max_nb_chars=1000),
                 author_id=1,
-                pub_date=fake.date_between(start_date="-30d", end_date="today")
+                pub_date=fake.date_time_between(start_date="-30d", end_date="now")
             )
 
             new_post.save()
