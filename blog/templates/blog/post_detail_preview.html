@@ -1,0 +1,45 @@
+<div class="post-preview-header">
+  <i class="fas fa-times post-preview-close" id="postPreviewClose"></i>
+</div>
+
+<div class="post-preview-body">
+  <p>
+    <small class="text-muted">
+      <i class="fas fa-clock"></i>
+      Posted on: {{ post.pub_date }}
+    </small>
+  </p>
+
+  <h1>{{ post.title }}</h1>
+
+  <p class="description">
+   {{ post.body }}
+  </p>
+
+  <div class="row">
+    <div class="col">
+      {% if post.category %}
+      <p>
+        <i class="fas fa-clipboard-list text-success align-text-top"></i>
+        <a href="{%  url 'posts.filter' %}?category={{ post.category_id }}"> {{ post.category.name }}</a>
+      </p>
+      {% endif %}
+
+      <p>
+        {% for tag in post.tag.all %}
+          <a href="{% url 'posts.filter' %}?tag={{ tag.id }}">
+            <span class="badge btn btn-outline-secondary">{{ tag.name }}</span>
+          </a>
+        {% endfor %}
+      </p>
+    </div>
+    <div class="col text-right">
+      <p>
+        <a href="{% url 'posts.filter' %}?author={{ post.author.id }}">
+        <i class="fas fa-user-circle"></i>
+        <strong class="text-capitalize">{{ post.author }}</strong>
+      </a>
+      </p>
+    </div>
+  </div>
+</div>
