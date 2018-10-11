@@ -1,32 +1,53 @@
-{% extends "main.html" %}
+{% extends "post_main.html" %}
 {% block sub_title %}All posts{% endblock %}
 
 {% block content %}
-  <h1 class="h1">Posts</h1>
-  <ul class="list-unstyled">
-    {% for post in post_list %}
-      <li class="media mt-3">
-        <div class="media-body">
-          <h5 class="mt-0 mb-1">
-            <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
-          </h5>
-            {{ post.short_body }}
-          <p>
-            <small>Was published
-              <strong class="text-muted">{{ post.pub_date }}</strong>
-              by
-              <strong class="text-primary">
-                <a href="{% url 'posts.filter' %}?author={{ post.author.id }}">{{ post.author }}</a>
-              </strong>
-            </small>
-          </p>
+  <h1 class="h1">
+    Posts
+    {% if request.user.is_authenticated %}
+      <a href="{% url 'post.create' %}" class="btn btn-outline-success btn-sm float-right mt-2">
+        <i class="fas fa-plus"></i> Write new post
+      </a>
+    {% endif %}
+  </h1>
+
+  {% for post in post_list %}
+    <article class="mb-3 shadow-sm px-2 py-2 clearfix">
+      <h5 class="mt-0 mb-1">
+        <a href="{{ post.get_absolute_url }}">
+          {{ post.title }}
+        </a>
+      </h5>
+
+      <p>
+        {{ post.short_body }}
+      </p>
+
+      <div class="mb-2">
+        {% if request.user.id is post.author.id %}
+        <a href="{% url 'post.edit' post.id %}" class="btn btn-sm text-warning" title="Edit">
+          <i class="fa fa-edit"></i>
+        </a>
+        {% endif %}
+
+        <small>Was published
+          <strong class="text-muted">{{ post.pub_date }}</strong>
+          by
+          <strong class="text-primary">
+            <a href="{% url 'posts.filter' %}?author={{ post.author.id }}">{{ post.author }}</a>
+          </strong>
+        </small>
+
+        <div class="btn-group float-right">
+          <a href="{% url 'post.detail' post.id %}" class="btn btn-sm btn-outline-secondary">Read more</a>
+          <a href="{% url 'post.detail.preview' post.id %}" class="btn btn-sm btn-outline-secondary" data-target="post-preview">Preview</a>
         </div>
-      </li>
-    {% endfor %}
-  </ul>
+      </div>
+    </article>
+  {% endfor %}
+
 
   {% if is_paginated %}
-    <hr>
     <nav>
       <ul class="pagination">
         {% if page_obj.has_previous %}
