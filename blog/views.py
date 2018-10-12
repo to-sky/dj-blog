@@ -77,6 +77,7 @@ def post_detail_preview(request, pk):
     post = get_object_or_404(Post, pk=pk)
     return render(request, 'blog/post_detail_preview.html', {'post': post})
 
+
 class PostListView(ListView):
     model = Post
     paginate_by = 10

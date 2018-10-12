@@ -91,13 +91,14 @@
     }
   </style>
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">DjBlog</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+{#    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"#}
+{#            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">#}
+{#      <span class="navbar-toggler-icon"></span>#}
+{#    </button>#}
+
     <div class="collapse navbar-collapse" id="navbarNav">
+
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
           <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
@@ -107,25 +108,33 @@
         </li>
       </ul>
 
-      <ul class="list-inline">
+      {# Sign in/out block #}
+      <ul class="navbar-nav">
         {% if user.is_authenticated %}
-            <li class="list-inline-item">
-              <a href="{% url 'profile' %}">
+            <li class="nav-item">
+              <a href="{% url 'profile' %}" class="nav-link" >
                 <i class="fas fa-user-circle"></i>
-                <strong class="text-capitalize">{{ user }}</strong>
+                {{ user }}
               </a>
-            </li>|
-            <li class="list-inline-item">
-              <a href="{% url 'account_logout' %}">
-                <small class="text-muted">Sign Out <i class="fas fa-sign-out-alt"></i></small>
+            </li>
+
+            <i class="fas fa-ellipsis-v text-light align-self-center"></i>
+
+            <li class="nav-item">
+              <a href="{% url 'account_logout' %}" class="nav-link" >
+                Sign Out <i class="fas fa-sign-out-alt"></i>
               </a>
             </li>
         {% else %}
-            <li class="list-inline-item">
-              <a href="{% url 'account_login' %}">Sign In</a>
+            <li class="nav-item">
+              <a href="{% url 'account_login' %}" class="nav-link" >
+                Sign In
+              </a>
             </li>
-            <li class="list-inline-item">
-              <a href="{% url 'account_signup' %}">Sign Up</a>
+            <li class="nav-item">
+              <a href="{% url 'account_signup' %}" class="nav-link" >
+                Sign Up
+              </a>
             </li>
         {% endif %}
       </ul>
@@ -144,7 +153,6 @@
 
   <script>
     let postPreviewBlock = $('#postPreview');
-
     let mainWidth = $('main').width();
     let containerWidth = $('.container').outerWidth();
     let mainPaddingRight = (mainWidth - containerWidth) / 2;
