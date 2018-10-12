@@ -25,6 +25,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     re_path(r'^accounts/', include('allauth.urls')),
     re_path(r'^accounts/profile', views.profile, name='profile'),
-    path('', RedirectView.as_view(url='blog/')),
+    path('', RedirectView.as_view(url='home')),
+    path('home', views.home, name="home"),
     path('blog/', include('blog.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

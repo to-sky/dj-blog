@@ -1,0 +1,70 @@
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f8f9fa;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #999999;
+}
+
+/* Main */
+.main-nav {
+  box-shadow: 0 2px 6px rgba(0,0,0,.4);
+  background-color: #607D8B
+}
+
+/* Post preview modal */
+.post-preview-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.post-preview-content {
+  padding: 50px 60px 0;
+  position: absolute;
+  top: 0;
+  z-index: 10;
+  height: 100%;
+  box-shadow: -5px 8px 37px rgba(0,0,0,.1),
+              0 0 160px 10px rgba(100,100,100,.1) inset;
+  background: white;
+  transition: all .8s ease;
+  overflow: auto;
+}
+
+.post-preview-body .pp-title {
+  color: #e83e8c99;
+  text-shadow: 1px 1px 2px rgba(0,0,0,.2);
+}
+
+.post-preview-body .pp-description {
+  padding: 10px 0;
+  border-top: 1px solid #dadada40;
+  border-bottom: 1px solid #dadada40;
+  color: #808080;
+}
+
+.post-preview-close {
+  padding: 5px 10px;
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  border: 1px solid #6c757d3d;
+  font-size: 25px;
+  color: #80808094;
+  cursor: pointer;
+  transition: all .3s ease;
+}
+
+.post-preview-close:hover {
+  color: #ffd20e;
+  box-shadow: 0 0 3px rgba(0,0,0,.1) inset;
+}

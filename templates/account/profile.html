@@ -1,9 +1,5 @@
 {% extends "account/base.html" %}
 
-{% block menu %}
-  <h3>This is menu for user</h3>
-{% endblock %}
-
 {% block content %}
   <div class="row mt-3">
     <div class="col-3">
@@ -29,8 +25,8 @@
         <div class="tab-pane fade" id="v-pills-posts" role="tabpanel" aria-labelledby="v-pills-posts-tab">
           <h4>
             Posts
-            <a href="{% url 'post.create' %}" class="btn btn-sm btn-success float-right">
-              <i class="fas fa-plus-square"></i> Create
+            <a href="{% url 'post.create' %}" class="btn btn-sm btn-success float-right" title="Create post">
+              <i class="fas fa-plus-square"></i>
             </a>
           </h4>
 
@@ -39,14 +35,15 @@
               <li class="list-group-item">
                 {{ post }}
                 <div class="btn-group float-right" role="group" >
-                  <a href="{% url 'post.edit' post.id %}" class="btn btn-sm btn-outline-primary">
-                    <i class="fas fa-pencil-alt"></i> Edit
+                  <a href="{% url 'post.edit' post.id %}" class="btn btn-sm btn-outline-primary" title="Edit">
+                    <i class="fas fa-pencil-alt"></i>
                   </a>
                   <a href="{% url 'post.delete' post.id %}"
                      class="btn btn-sm btn-outline-danger delete-post"
+                     title="Delete"
                      data-toggle="modal"
                      data-target="#deletePostModal">
-                    <i class="fas fa-eraser"></i> Delete</a>
+                    <i class="fas fa-eraser"></i></a>
                 </div>
               </li>
             {% endfor %}

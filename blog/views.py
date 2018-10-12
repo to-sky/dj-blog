@@ -3,9 +3,12 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
-
 from .forms import PostForm
 from .models import Post
+
+
+def home(request):
+    return render(request, 'home.html')
 
 
 def profile(request):
@@ -75,7 +78,7 @@ def post_delete(request, pk):
 
 def post_detail_preview(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    return render(request, 'blog/post_detail_preview.html', {'post': post})
+    return render(request, 'blog/_post_detail_preview.html', {'post': post})
 
 
 class PostListView(ListView):

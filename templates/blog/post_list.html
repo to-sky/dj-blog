@@ -1,4 +1,4 @@
-{% extends "post_main.html" %}
+{% extends "blog/post_main.html" %}
 {% block sub_title %}All posts{% endblock %}
 
 {% block content %}
@@ -80,5 +80,11 @@
       </ul>
     </nav>
   {% endif %}
+{% endblock %}
 
+
+{% block extra_body %}
+  <div class="post-preview-container">
+    <div id="postPreview" class="post-preview-content scrollbar-style"></div>
+  </div>
 {% endblock %}
