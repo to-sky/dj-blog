@@ -3,21 +3,26 @@
 
 {% block main %}
   <div class="container mt-3">
-    <div class="row">
+    {% block pre_content %}{% endblock %}
 
+    <div class="row">
       <div class="col-md-9">
         {% block content %}{% endblock %}
       </div>
 
-      <div class="col-md-3 border-left border-light" id="sidebar">
-        {% block sidebar %}
-          <h2>Sidebar</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto atque cum dolore eligendi illum
-            incidunt inventore iure laudantium, maiores nisi placeat possimus provident quasi, quibusdam repellat
-            similique sunt vel veritatis?</p>
-        {% endblock %}
+      <div class="col-md-3">
+        <div class="sidebar bg-white px-3 pt-2 pb-4 shadow-sm" id="sidebar">
+          {% block sidebar %}
+            <h3 class="mt-3 text-center text-monospace text-muted">Sidebar</h3>
+            <hr>
+            {% if request.user.is_authenticated %}
+              <a href="{% url 'post.create' %}" class="btn btn-outline-success btn-sm d-block">
+                <i class="fal fa-plus"></i> Write new post
+              </a>
+            {% endif %}
+          {% endblock %}
+        </div>
       </div>
-
     </div>
   </div>
 {% endblock %}
