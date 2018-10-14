@@ -1,23 +1,29 @@
 {% extends "blog/post_main.html" %}
 {% block sub_title %}All posts{% endblock %}
 
-{% block content %}
-  <h1 class="h1">
-    Posts
-    {% if request.user.is_authenticated %}
-      <a href="{% url 'post.create' %}" class="btn btn-outline-success btn-sm float-right mt-2">
-        <i class="fas fa-plus"></i> Write new post
-      </a>
-    {% endif %}
-  </h1>
+{% block pre_content %}
+  <div class="my-4">
+    <form action="/" method="get">
+      <div class="input-group mb-3">
+        <input type="search" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="button-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-outline-light border" type="submit">
+            <i class="fal fa-search text-warning"></i>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+{% endblock %}
 
+{% block content %}
   {% for post in post_list %}
-    <article class="mb-3 shadow-sm px-2 py-2 clearfix">
-      <h5 class="mt-0 mb-1">
+    <article class="mb-3 shadow-sm px-3 py-2 clearfix bg-white">
+      <h2 class="mt-0 mb-1 h3">
         <a href="{{ post.get_absolute_url }}">
           {{ post.title }}
         </a>
-      </h5>
+      </h2>
 
       <p>
         {{ post.short_body }}
@@ -26,7 +32,7 @@
       <div class="mb-2">
         {% if request.user.id is post.author.id %}
         <a href="{% url 'post.edit' post.id %}" class="btn btn-sm text-warning" title="Edit">
-          <i class="fa fa-edit"></i>
+          <i class="fal fa-edit"></i>
         </a>
         {% endif %}
 
@@ -46,42 +52,11 @@
     </article>
   {% endfor %}
 
-
+  {# Pagination #}
   {% if is_paginated %}
-    <nav>
-      <ul class="pagination">
-        {% if page_obj.has_previous %}
-          <li class="page-item">
-            <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
-          </li>
-          <li class="page-item">
-            <a class="page-link" href="?page={{ page_obj.previous_page_number }}">
-              {{ page_obj.previous_page_number }}
-            </a>
-          </li>
-        {% endif %}
-
-        <li class="page-item active">
-          <a class="page-link" href="?page={{ page_obj.number }}">
-            {{ page_obj.number }} <span class="sr-only">(current)</span>
-          </a>
-        </li>
-
-        {% if page_obj.has_next %}
-          <li class="page-item">
-            <a class="page-link" href="?page={{ page_obj.next_page_number }}">
-              {{ page_obj.next_page_number }}
-            </a>
-          </li>
-          <li class="page-item">
-            <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
-          </li>
-        {% endif %}
-      </ul>
-    </nav>
+    {% include 'blog/_pagination.html' %}
   {% endif %}
 {% endblock %}
-
 
 {% block extra_body %}
   <div class="post-preview-container">

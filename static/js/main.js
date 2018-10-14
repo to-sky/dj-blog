@@ -2,7 +2,7 @@ let postPreviewBlock = $('#postPreview');
 let mainWidth = $('main').width();
 let containerWidth = $('.container').outerWidth();
 let mainPaddingRight = (mainWidth - containerWidth) / 2;
-let postPreviewWidth = $('#sidebar').outerWidth() + mainPaddingRight;
+let postPreviewWidth = $('#sidebar').parent().outerWidth() + mainPaddingRight;
 
 postPreviewBlock.css({
     'right': '-' + postPreviewWidth + 'px'

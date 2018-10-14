@@ -1,10 +1,20 @@
 {% extends "blog/post_main.html" %}
 {% block sub_title %}{{ post.title }}{% endblock %}
 
+{# Breadcrumb #}
+{% block pre_content %}
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb bg-transparent pl-0">
+      <li class="breadcrumb-item"><a href="{% url 'posts.list' %}">Blog</a></li>
+      <li class="breadcrumb-item active" aria-current="page">{{ post.title }}</li>
+    </ol>
+  </nav>
+{% endblock %}
+
 {% block content %}
-  <article>
-    <h1>{{ post.title }}</h1>
-    <p class="text-info mt-2 mb-4">
+  <article class="shadow-sm p-4">
+    <h1 class="text-rose">{{ post.title }}</h1>
+    <p class="text-secondary mt-2 mb-4">
       Published by <a href="{% url 'posts.filter' %}?author={{ post.author.id }}">{{ post.author }}</a> on {{ post.pub_date }}
     </p>
     <p>{{ post.body }}</p>
@@ -16,13 +26,14 @@
         <p>Tags:
           {% for tag in post.tag.all %}
             <a href="{% url 'posts.filter' %}?tag={{ tag.id }}">
-              <span class="badge badge-pill badge-secondary">{{ tag }}</span>
+              <span class="badge badge-pill bg-green text-shadow-sm text-white">{{ tag }}</span>
             </a>
           {% endfor %}
         </p>
       </div>
     {% endif %}
   </article>
+
 
   {#TODO: need to be adding the comments #}
 {% endblock %}

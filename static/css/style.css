@@ -15,10 +15,91 @@
   background: #999999;
 }
 
+/* Bootstrap */
+a {
+  color: #56a8ff;
+  transition: all .2s ease;
+}
+
+a:hover {
+  color: #036cde;
+}
+
+.page-item.active .page-link {
+  background: #56a8ff;
+  border-color: #56a8ff;
+}
+
 /* Main */
-.main-nav {
-  box-shadow: 0 2px 6px rgba(0,0,0,.4);
-  background-color: #607D8B
+body {
+  background-color: #56a8ff03;
+}
+
+.bg-transparent {
+  background: transparent;
+}
+
+.bg-blue {
+  background: #56a8ff;
+}
+
+.text-blue {
+  color: #56a8ff;
+}
+
+.text-blue:hover {
+  color: #036cde;
+}
+
+.bg-rose {
+  background: #ff8581d9;
+}
+
+.text-rose {
+  color: #ff8581d9;
+}
+
+.bg-green {
+  background: #8cc63f;
+}
+
+.text-green {
+  color: #8cc63f;
+}
+
+.text-shadow-sm {
+  text-shadow: 1px 1px 1px rgba(0,0,0,.3);
+}
+
+.bg-red {
+  background-color: #e43c37;
+}
+
+.text-red {
+  background-color: #e43c37;
+}
+
+/* Homepage */
+.c-jumbotron {
+  background-color: #f14742;
+  border-radius: 0;
+  background-image: url('../img/owls.png');
+  background-position-y: center;
+  background-position-x: 101%;
+  background-size: 520px;
+  background-repeat: no-repeat;
+}
+
+.c-jumbotron-heading {
+  font-size: 56px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  color: #fdfdff;
+}
+
+.post-image-right {
+  padding: 10px 0;
+  width: 200px;
+  height: 250px;
 }
 
 /* Post preview modal */
@@ -28,7 +109,7 @@
 }
 
 .post-preview-content {
-  padding: 50px 60px 0;
+  padding: 50px 50px 0;
   position: absolute;
   top: 0;
   z-index: 10;
@@ -41,7 +122,7 @@
 }
 
 .post-preview-body .pp-title {
-  color: #e83e8c99;
+  color: #ff8581;
   text-shadow: 1px 1px 2px rgba(0,0,0,.2);
 }
 
