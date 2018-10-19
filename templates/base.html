@@ -6,8 +6,6 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
   integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-  {% block styles %}{% endblock %}
-
   {% load static %}
   <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/favicon-32x32.png' %}">
   <link rel="stylesheet" href="{% static 'css/fontawesome/css/fontawesome-all.min.css' %}">
@@ -34,7 +32,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item  {% if "/home" in request.path %}active{% endif %}">
-              <a class="nav-link" href="/home">
+              <a class="nav-link" href="{% url 'home' %}">
                 Home <span class="sr-only">(current)</span>
               </a>
             </li>
