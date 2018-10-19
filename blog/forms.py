@@ -12,7 +12,7 @@ class PostForm(forms.ModelForm):
         widgets = {
             'title': TextInput(attrs={'class': 'form-control'}),
             'body': Textarea(attrs={'class': 'form-control'}),
-            'category': Select(attrs={'class': 'form-control'}),
-            'tag': SelectMultiple(attrs={'class': 'form-control'}),
+            'category': Select(attrs={'class': 'form-control add-select2'}),
+            'tag': SelectMultiple(attrs={'class': 'form-control add-select2'}),
         }
 
