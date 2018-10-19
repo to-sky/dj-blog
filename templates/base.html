@@ -32,7 +32,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item  {% if "/home" in request.path %}active{% endif %}">
-              <a class="nav-link" href="/home">
+              <a class="nav-link" href="{% url 'home' %}">
                 Home <span class="sr-only">(current)</span>
               </a>
             </li>

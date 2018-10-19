@@ -25,6 +25,10 @@ a:hover {
   color: #036cde;
 }
 
+.form-control {
+  border-radius: 0;
+}
+
 .page-item.active .page-link {
   background: #56a8ff;
   border-color: #56a8ff;

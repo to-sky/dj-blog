@@ -4,25 +4,37 @@
 
 {% block main %}
   <div class="container">
-    <h1 >Create post:</h1>
+    <div class="col shadow my-3 p-3">
+      <h1 class="h2">Create post:</h1>
 
-    <form action="{{ action }}" method="post">
-      {% csrf_token %}
+      <form action="{{ action }}" method="post">
+        {% csrf_token %}
 
-      {% for field in form %}
-        <div class="form-group">
-          {{ field.label_tag }}
-          {{ field }}
+        {% for field in form %}
+          <div class="form-group">
+            {{ field.label_tag }}
+            {{ field }}
 
-          {% if field.errors %}
-            <small class="text-danger">
-              {{ field.errors|striptags }}
-            </small>
-          {% endif %}
-        </div>
-      {% endfor %}
+            {% if field.errors %}
+              <small class="text-danger">
+                {{ field.errors|striptags }}
+              </small>
+            {% endif %}
+          </div>
+        {% endfor %}
 
-      <input type="submit" value="Submit" class="btn btn-primary">
-    </form>
+        <input type="submit" value="Submit" class="btn btn-primary">
+      </form>
+    </div>
   </div>
+{% endblock %}
+
+{% block scripts %}
+  <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=dx8b0exnz6aupmx3uci3tmye1ul50zf7m36rot1eukca7c00"></script>
+
+  <script>
+    tinymce.init({
+      selector: '#id_body'
+    });
+  </script>
 {% endblock %}
