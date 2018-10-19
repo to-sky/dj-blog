@@ -12,9 +12,9 @@
 
   <h3 class="pp-title">{{ post.title }}</h3>
 
-  <p class="pp-description">
-   {{ post.body }}
-  </p>
+  <div class="pp-description">
+   {{ post.body|safe }}
+  </div>
 
   <div class="row">
     <div class="col">

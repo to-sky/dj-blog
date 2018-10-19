@@ -63,7 +63,7 @@ def post_edit(request, pk):
     else:
         form = PostForm(instance=post)
 
-    return render(request, 'blog/forms/post_create.html', {'form': form})
+    return render(request, 'blog/forms/post_edit.html', {'form': form, 'post': post})
 
 
 def post_delete(request, pk):

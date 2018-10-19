@@ -3,8 +3,8 @@
 
 {# Breadcrumb #}
 {% block pre_content %}
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb bg-transparent pl-0">
+  <nav aria-label="breadcrumb" class="shadow">
+    <ol class="breadcrumb bg-white border border-light-gray rounded-0">
       <li class="breadcrumb-item"><a href="{% url 'posts.list' %}">Blog</a></li>
       <li class="breadcrumb-item active" aria-current="page">{{ post.title }}</li>
     </ol>
@@ -12,26 +12,41 @@
 {% endblock %}
 
 {% block content %}
-  <article class="shadow-sm p-4">
-    <h1 class="text-rose">{{ post.title }}</h1>
+  <article class="post shadow p-4 border border-light-gray">
+    <h1 class="post_title text-rose">{{ post.title }}</h1>
     <p class="text-secondary mt-2 mb-4">
       Published by <a href="{% url 'posts.filter' %}?author={{ post.author.id }}">{{ post.author }}</a> on {{ post.pub_date }}
     </p>
-    <p>{{ post.body }}</p>
-    <hr>
-    <p>Category: <a href="{%  url 'posts.filter' %}?category={{ post.category_id }}">{{ post.category }}</a></p>
+    <div class="post_content pb-3">
+      {{ post.body|safe }}
+    </div>
 
-    {% if post.tag.count %}
-      <div>
-        <p>Tags:
-          {% for tag in post.tag.all %}
-            <a href="{% url 'posts.filter' %}?tag={{ tag.id }}">
-              <span class="badge badge-pill bg-green text-shadow-sm text-white">{{ tag }}</span>
+    <footer>
+      <div class="row border-top pt-3">
+        <span class="col align-self-sm-center">
+          Category: <a href="{%  url 'posts.filter' %}?category={{ post.category_id }}">{{ post.category }}</a>
+        </span>
+        <span class="col text-right">
+          {% if user.is_authenticated and user == post.author %}
+            <a href="{%  url 'post.edit' post.id %}" class="btn btn-sm btn-outline-warning">
+              <i class="fal fa-edit"></i> Edit
             </a>
-          {% endfor %}
-        </p>
+          {% endif %}
+        </span>
       </div>
-    {% endif %}
+
+      {% if post.tag.count %}
+        <div>
+          <p>Tags:
+            {% for tag in post.tag.all %}
+              <a href="{% url 'posts.filter' %}?tag={{ tag.id }}">
+                <span class="badge badge-pill bg-green text-shadow-sm text-white">{{ tag }}</span>
+              </a>
+            {% endfor %}
+          </p>
+        </div>
+      {% endif %}
+    </footer>
   </article>
 
 
