@@ -32,3 +32,11 @@ $('body').on('click', '#postPreviewClose', function () {
       $('#postPreview').html('');
   }, 700);
 });
+
+// add select2
+$(document).ready(function() {
+  let select2Sel = $('.add-select2');
+  if(select2Sel.lenght) {
+   select2Sel.select2();
+  }
+});

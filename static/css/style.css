@@ -35,8 +35,14 @@ a:hover {
 }
 
 /* Main */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
 body {
   background-color: #56a8ff03;
+  margin-bottom: 60px;
 }
 
 .bg-transparent {
@@ -45,6 +51,10 @@ body {
 
 .bg-blue {
   background: #56a8ff;
+}
+
+.bg-primary-custom {
+  background: #607d8b;
 }
 
 .text-blue {
@@ -75,7 +85,7 @@ body {
   text-shadow: 1px 1px 1px rgba(0,0,0,.3);
 }
 
-.bg-red {
+.bg-warning-custom {
   background-color: #e43c37;
 }
 
@@ -164,6 +174,20 @@ body {
 .post-preview-close:hover {
   color: #ffd20e;
   box-shadow: 0 0 3px rgba(0,0,0,.1) inset;
+}
+
+/* Footer */
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+}
+
+.footer > .container {
+    padding-right: 15px;
+    padding-left: 15px;
 }
 
 /* Select2 */

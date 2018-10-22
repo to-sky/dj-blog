@@ -15,19 +15,4 @@
 {% block scripts %}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
   <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=dx8b0exnz6aupmx3uci3tmye1ul50zf7m36rot1eukca7c00"></script>
-
-  {% load static %}
-{#  <script src="{% static 'ckeditor/ckeditor.js' %}"></script>#}
-
-  <script>
-    $(document).ready(function() {
-      $('.add-select2').select2();
-    });
-
-    {#CKEDITOR.replace( 'id_body' );#}
-
-    tinymce.init({
-      selector: '#id_body'
-    });
-  </script>
 {% endblock %}
